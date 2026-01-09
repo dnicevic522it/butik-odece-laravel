@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SizeStoreRequest;
 use App\Http\Requests\SizeUpdateRequest;
 use App\Models\Size;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class SizeController extends Controller
 {

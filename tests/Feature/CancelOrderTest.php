@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class CancelOrderTest extends TestCase
 {
@@ -14,11 +14,11 @@ class CancelOrderTest extends TestCase
     {
         $category = Category::create([
             'name' => 'Nova Kategorija',
-            'description' => 'Test opis'
+            'description' => 'Test opis',
         ]);
 
         $this->assertDatabaseHas('categories', [
-            'name' => 'Nova Kategorija'
+            'name' => 'Nova Kategorija',
         ]);
     }
 

@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrderItemStoreRequest;
 use App\Http\Requests\OrderItemUpdateRequest;
 use App\Models\OrderItem;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class OrderItemController extends Controller
 {

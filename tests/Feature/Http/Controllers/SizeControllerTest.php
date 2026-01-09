@@ -28,7 +28,6 @@ final class SizeControllerTest extends TestCase
         $response->assertViewHas('sizes', $sizes);
     }
 
-
     #[Test]
     public function create_displays_view(): void
     {
@@ -37,7 +36,6 @@ final class SizeControllerTest extends TestCase
         $response->assertOk();
         $response->assertViewIs('size.create');
     }
-
 
     #[Test]
     public function store_uses_form_request_validation(): void
@@ -68,7 +66,6 @@ final class SizeControllerTest extends TestCase
         $response->assertSessionHas('size.id', $size->id);
     }
 
-
     #[Test]
     public function show_displays_view(): void
     {
@@ -81,7 +78,6 @@ final class SizeControllerTest extends TestCase
         $response->assertViewHas('size', $size);
     }
 
-
     #[Test]
     public function edit_displays_view(): void
     {
@@ -93,7 +89,6 @@ final class SizeControllerTest extends TestCase
         $response->assertViewIs('size.edit');
         $response->assertViewHas('size', $size);
     }
-
 
     #[Test]
     public function update_uses_form_request_validation(): void
@@ -122,7 +117,6 @@ final class SizeControllerTest extends TestCase
 
         $this->assertEquals($size, $size->size);
     }
-
 
     #[Test]
     public function destroy_deletes_and_redirects(): void

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class OrderProductTest extends TestCase
 {
@@ -13,10 +13,10 @@ class OrderProductTest extends TestCase
 
     public function test_homepage_displays_products(): void
     {
-        
+
         $category = Category::create([
             'name' => 'Test Kategorija',
-            'description' => 'Opis'
+            'description' => 'Opis',
         ]);
 
         $product = Product::create([
@@ -25,13 +25,11 @@ class OrderProductTest extends TestCase
             'price' => 1000,
             'category_id' => $category->id,
             'gender' => 'unisex',
-            'is_active' => true
+            'is_active' => true,
         ]);
 
-        
         $response = $this->get('/');
 
-        
         $response->assertStatus(200);
     }
 

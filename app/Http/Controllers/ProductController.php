@@ -4,24 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
-use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
-{
-    $products = Product::where('is_active', true)->paginate(12);
-    $categories = Category::all();
+    {
+        $products = Product::where('is_active', true)->paginate(12);
+        $categories = Category::all();
 
-    return view('products.index', [
-        'products' => $products,
-        'categories' => $categories,
-    ]);
-}
+        return view('products.index', [
+            'products' => $products,
+            'categories' => $categories,
+        ]);
+    }
 
     public function create(Request $request)
     {

@@ -17,7 +17,7 @@ class ProductFactory extends Factory
             'description' => fake()->text(),
             'price' => fake()->randomFloat(2, 0, 99999999.99),
             'category_id' => Category::factory(),
-            'gender' => fake()->randomElement(["male","female","unisex"]),
+            'gender' => fake()->randomElement(['male', 'female', 'unisex']),
             'color' => fake()->regexify('[A-Za-z0-9]{50}'),
             'material' => fake()->regexify('[A-Za-z0-9]{100}'),
             'image_url' => fake()->regexify('[A-Za-z0-9]{500}'),

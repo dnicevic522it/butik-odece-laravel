@@ -16,7 +16,7 @@ class UserFactory extends Factory
             'email' => fake()->safeEmail(),
             'email_verified_at' => fake()->dateTime(),
             'password' => fake()->password(),
-            'role' => fake()->randomElement(["customer","admin","stock_manager"]),
+            'role' => fake()->randomElement(['customer', 'admin', 'stock_manager']),
             'phone' => fake()->phoneNumber(),
             'address' => fake()->regexify('[A-Za-z0-9]{255}'),
             'city' => fake()->city(),

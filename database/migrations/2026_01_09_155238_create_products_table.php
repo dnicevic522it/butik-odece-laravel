@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->foreignId('category_id')->constrained();
-            $table->enum('gender', ["male","female","unisex"])->default('unisex');
+            $table->enum('gender', ['male', 'female', 'unisex'])->default('unisex');
             $table->string('color', 50)->nullable();
             $table->string('material', 100)->nullable();
             $table->string('image_url', 500)->nullable();
