@@ -1,0 +1,88 @@
+models:
+  User:
+    name: string:100
+    email: string:100 unique
+    email_verified_at: nullable timestamp
+    password: string
+    role: enum:customer,admin,stock_manager default:customer
+    phone: nullable string:20
+    address: nullable string:255
+    city: nullable string:100
+    postal_code: nullable string:20
+    remember_token: nullable string:100
+    timestamps
+
+  Category:
+    name: string:100
+    description: nullable text
+    parent_id: nullable id foreign:categories
+    timestamps
+    relationships:
+      hasMany: Product
+      belongsTo: Category
+
+  Product:
+    name: string:255
+    description: nullable text
+    price: decimal:10,2
+    category_id: id foreign:categories
+    gender: enum:male,female,unisex default:unisex
+    color: nullable string:50
+    material: nullable string:100
+    image_url: nullable string:500
+    is_active: boolean default:true
+    timestamps
+    relationships:
+      belongsTo: Category
+      hasMany: Size, OrderItem
+
+  Size:
+    product_id: id foreign:products
+    size: string:10
+    quantity_in_stock: integer default:0
+    low_stock_threshold: integer default:5
+    timestamps
+    relationships:
+      belongsTo: Product
+      hasMany: OrderItem
+
+  Order:
+    order_number: string:50 unique
+    user_id: id foreign:users
+    status: enum:pending,processing,shipped,delivered,cancelled default:pending
+    total_amount: decimal:10,2
+    shipping_address: string:255
+    shipping_city: string:100
+    shipping_postal_code: string:20
+    payment_method: enum:cash_on_delivery,card,paypal default:cash_on_delivery
+    notes: nullable text
+    timestamps
+    relationships:
+      belongsTo: User
+      hasMany: OrderItem
+
+  OrderItem:
+    order_id: id foreign:orders
+    product_id: id foreign:products
+    size_id: id foreign:sizes
+    quantity: integer
+    price: decimal:10,2
+    timestamps
+    relationships:
+      belongsTo: Order, Product, Size
+
+seeders: User, Category, Product, Size, Order, OrderItem
+
+controllers:
+  User:
+    resource: web
+  Category:
+    resource: web
+  Product:
+    resource: web
+  Size:
+    resource: web
+  Order:
+    resource: web
+  OrderItem:
+    resource: web
