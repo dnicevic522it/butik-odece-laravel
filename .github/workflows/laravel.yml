@@ -43,6 +43,11 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: php artisan migrate --force
 
+    - name: Build assets
+      run: |
+        npm install
+        npm run build
+
     - name: Run Pint (Code Style)
       run: ./vendor/bin/pint --test
 
