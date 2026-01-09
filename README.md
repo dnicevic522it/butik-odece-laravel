@@ -61,3 +61,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Autor
 Davud Nicevic
+
+## Funkcionalnosti
+- Pregled proizvoda
+- Korpa
+- Naručivanje
