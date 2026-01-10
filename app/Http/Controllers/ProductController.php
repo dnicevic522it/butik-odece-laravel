@@ -36,11 +36,13 @@ class ProductController extends Controller
     }
 
     public function show(Request $request, Product $product)
-    {
-        return view('product.show', [
-            'product' => $product,
-        ]);
-    }
+{
+    $product->load(['category', 'sizes']);
+    
+    return view('products.show', [
+        'product' => $product,
+    ]);
+}
 
     public function edit(Request $request, Product $product)
     {
