@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        
+
         User::create([
             'name' => 'Admin',
             'email' => 'admin@butik.rs',
@@ -28,12 +28,10 @@ class DatabaseSeeder extends Seeder
             'role' => 'customer',
         ]);
 
-        
         $kosulје = Category::create(['name' => 'Košulje', 'description' => 'Muške i ženske košulje']);
         $pantalone = Category::create(['name' => 'Pantalone', 'description' => 'Muške i ženske pantalone']);
         $haljine = Category::create(['name' => 'Haljine', 'description' => 'Elegantne haljine']);
 
-        
         $p1 = Product::create([
             'name' => 'Bela košulja',
             'description' => 'Elegantna bela košulja za poslovne prilike',
@@ -71,7 +69,6 @@ class DatabaseSeeder extends Seeder
         Size::create(['product_id' => $p3->id, 'size' => 'L', 'quantity_in_stock' => 6]);
         Size::create(['product_id' => $p3->id, 'size' => 'XL', 'quantity_in_stock' => 4]);
 
-        
         $p4 = Product::create([
             'name' => 'Crne pantalone',
             'description' => 'Elegantne crne pantalone',
@@ -97,7 +94,6 @@ class DatabaseSeeder extends Seeder
         Size::create(['product_id' => $p5->id, 'size' => 'M', 'quantity_in_stock' => 15]);
         Size::create(['product_id' => $p5->id, 'size' => 'L', 'quantity_in_stock' => 10]);
 
-        
         $p6 = Product::create([
             'name' => 'Crvena haljina',
             'description' => 'Prelepa crvena haljina za izlaske',
