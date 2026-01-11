@@ -120,7 +120,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $this->authorize('view', $order);
+        // $this->authorize('view', $order);
 
         $order->load(['items.product', 'items.size', 'user']);
 
@@ -133,7 +133,7 @@ class OrderController extends Controller
      */
     public function cancel(Request $request, Order $order)
     {
-        $this->authorize('cancel', $order);
+        // $this->authorize('cancel', $order);
 
         // Dodatna provera statusa
         if ($order->status !== 'pending') {

@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title', 'Korpa - Butik Odeće')
@@ -31,8 +32,7 @@
                         <td class="px-6 py-4">
                             <div class="flex items-center">
                                 @if($item['product']->image_url)
-                                    <img src="{{ $item['product']->image_url }}" alt="{{ $item['product']->name }}" 
-                                         class="w-16 h-16 object-cover rounded mr-4">
+                                    <img src="{{ $item['product']->image_url }}" alt="{{ $item['product']->name }}" class="w-16 h-16 object-cover rounded mr-4">
                                 @else
                                     <div class="w-16 h-16 bg-gray-200 rounded mr-4 flex items-center justify-center">
                                         <span class="text-gray-400 text-xs">Nema slike</span>
@@ -49,16 +49,7 @@
                         <td class="px-6 py-4 text-gray-500">{{ $item['size']->size }}</td>
                         <td class="px-6 py-4 text-gray-500">{{ number_format($item['product']->price, 2) }} RSD</td>
                         <td class="px-6 py-4">
-                            <form action="{{ route('cart.update') }}" method="POST" class="flex items-center">
-                                @csrf
-                                @method('PATCH')
-                                <input type="hidden" name="key" value="{{ $item['key'] }}">
-                                <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" max="10"
-                                       class="w-16 border rounded px-2 py-1 text-center">
-                                <button type="submit" class="ml-2 text-blue-600 hover:text-blue-800 text-sm">
-                                    Ažuriraj
-                                </button>
-                            </form>
+                            <span class="text-gray-700">{{ $item['quantity'] }}</span>
                         </td>
                         <td class="px-6 py-4 font-semibold text-gray-900">
                             {{ number_format($item['subtotal'], 2) }} RSD
@@ -75,26 +66,23 @@
                     </tr>
                 @endforeach
             </tbody>
-            <tfoot class="bg-gray-50">
-                <tr>
-                    <td colspan="4" class="px-6 py-4 text-right font-semibold text-gray-800 text-lg">
-                        UKUPNO:
-                    </td>
-                    <td colspan="2" class="px-6 py-4 font-bold text-2xl text-blue-600">
-                        {{ number_format($total, 2) }} RSD
-                    </td>
-                </tr>
-            </tfoot>
         </table>
     </div>
-    
-    <div class="mt-6 flex justify-between items-center">
-        <a href="{{ route('products.index') }}" class="text-blue-600 hover:underline">
-            ← Nastavi kupovinu
-        </a>
-        <a href="{{ route('checkout') }}" class="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition">
-            Nastavi na plaćanje →
-        </a>
+
+    <!-- Ukupno i dugmad -->
+    <div class="mt-6 bg-white rounded-lg shadow p-6">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-xl font-semibold text-gray-800">Ukupno:</span>
+            <span class="text-2xl font-bold text-blue-600">{{ number_format($total, 2) }} RSD</span>
+        </div>
+        <div class="flex justify-between items-center">
+            <a href="{{ route('products.index') }}" class="text-blue-600 hover:underline">
+                ← Nastavi kupovinu
+            </a>
+            <a href="{{ route('checkout') }}" class="bg-green-500 text-black px-8 py-3 rounded-lg font-semibold text-lg hover:bg-green-600 transition">
+                Nastavi na plaćanje →
+            </a>
+        </div>
     </div>
 @endif
 @endsection
