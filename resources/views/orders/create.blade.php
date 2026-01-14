@@ -82,9 +82,9 @@
                           placeholder="Dodatne napomene za dostavu...">{{ old('notes') }}</textarea>
             </div>
             
-            <button type="submit" class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold text-lg hover:bg-green-600 transition">
-                Potvrdi narudžbinu
-            </button>
+           <button type="submit" style="background-color: #22c55e; color: white; width: 100%; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 18px; border: none; cursor: pointer;">
+    Potvrdi narudžbinu
+</button>
         </form>
     </div>
     

@@ -8,51 +8,49 @@
 </head>
 <body class="bg-gray-100">
     <!-- Navigacija -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="{{ route('home') }}" class="text-xl font-bold text-gray-800">
-                        Butik Odeće
+<nav style="background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 15px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center;">
+                <a href="{{ route('home') }}" style="font-size: 24px; font-weight: bold; color: #1f2937; text-decoration: none;">
+                    Butik Odeće
+                </a>
+                <span style="margin: 0 20px; color: #d1d5db;">|</span>
+                <a href="{{ route('products.index') }}" style="color: #4b5563; text-decoration: none; margin-right: 30px;">
+                    Proizvodi
+                </a>
+            </div>
+            <div style="display: flex; align-items: center;">
+                @auth
+                    <a href="{{ route('cart') }}" style="color: #4b5563; text-decoration: none; margin-right: 30px;">
+                        🛒 Korpa
                     </a>
-                    <div class="ml-10 flex items-center space-x-4">
-                        <a href="{{ route('products.index') }}" class="text-gray-600 hover:text-gray-900">
-                            Proizvodi
+                    <a href="{{ route('orders.index') }}" style="color: #4b5563; text-decoration: none; margin-right: 30px;">
+                        Moje narudžbine
+                    </a>
+                    @if(auth()->user()->role === 'admin')
+                        <a href="{{ route('admin.dashboard') }}" style="color: #2563eb; text-decoration: none; margin-right: 30px;">
+                            Admin Panel
                         </a>
-                    </div>
-                </div>
-                
-                <div class="flex items-center space-x-4">
-                    @auth
-                        <a href="{{ route('cart') }}" class="text-gray-600 hover:text-gray-900">
-                            🛒 Korpa
-                        </a>
-                        <a href="{{ route('orders.index') }}" class="text-gray-600 hover:text-gray-900">
-                            Moje narudžbine
-                        </a>
-                        @if(auth()->user()->role === 'admin')
-                            <a href="{{ route('admin.dashboard') }}" class="text-blue-600 hover:text-blue-800">
-                                Admin Panel
-                            </a>
-                        @endif
-                        <form method="POST" action="{{ route('logout') }}" class="inline">
-                            @csrf
-                            <button type="submit" class="text-gray-600 hover:text-gray-900">
-                                Odjavi se
-                            </button>
-                        </form>
-                    @else
-                        <a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-900">
-                            Prijavi se
-                        </a>
-                        <a href="{{ route('register') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                            Registruj se
-                        </a>
-                    @endauth
-                </div>
+                    @endif
+                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                        @csrf
+                        <button type="submit" style="color: #4b5563; background: none; border: none; cursor: pointer;">
+                            Odjavi se
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" style="color: #4b5563; text-decoration: none; margin-right: 20px;">
+                        Prijavi se
+                    </a>
+                    <a href="{{ route('register') }}" style="background-color: #3b82f6; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none;">
+                        Registruj se
+                    </a>
+                @endauth
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Flash poruke -->
     @if(session('success'))
